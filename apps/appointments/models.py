@@ -18,7 +18,7 @@ class Appointment(models.Model):
         related_name='appointments',
     )
     doctor = models.ForeignKey(
-        'doctors.DoctorProfile',
+        'doctor.DoctorProfile',
         on_delete=models.CASCADE,
         related_name='appointments',
     )
