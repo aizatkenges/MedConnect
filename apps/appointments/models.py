@@ -65,3 +65,4 @@ class Appointment(models.Model):
     def cancel(self) -> None:
         self.status = self.Status.CANCELLED
         self.save(update_fields=['status'])
+        

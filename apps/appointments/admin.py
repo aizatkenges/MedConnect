@@ -53,3 +53,4 @@ class AppointmentAdmin(admin.ModelAdmin):
     def mark_cancelled(self, request: HttpRequest, queryset: QuerySet) -> None:
         updated = queryset.update(status=Appointment.Status.CANCELLED)
         self.message_user(request, f'{updated} cancelled.', messages.SUCCESS)
+        
