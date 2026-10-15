@@ -2,7 +2,7 @@ from rest_framework.permissions import SAFE_METHODS, BasePermission
 from rest_framework.request import Request
 from rest_framework.views import APIView
 
-from apps.users.models import Role
+from apps.users.models import User
 
 from .models import Review
 
@@ -15,6 +15,6 @@ class IsReviewOwnerOrAdminOrReadOnly(BasePermission):
             return True
         user = request.user
         return (
-            user.role == Role.ADMIN  # type: ignore[union-attr]
+            user.role == User.Role.ADMIN  # type: ignore[union-attr]
             or obj.appointment.patient_id == user.pk
         )

@@ -7,7 +7,9 @@ from rest_framework.test import APITestCase
 
 from apps.appointments.models import Appointment, AppointmentStatus
 from apps.doctor.models import DoctorProfile, Specialization
-from apps.users.models import Role, User
+
+from apps.users.models import User
+
 
 from .models import Review
 
@@ -16,20 +18,20 @@ class ReviewAPITests(APITestCase):
     def setUp(self) -> None:
         self.patient = User.objects.create_user(
             "p@test.kz", "pass12345", first_name="P", last_name="T",
-            role=Role.PATIENT,
+            role=User.Role.PATIENT,
         )
         self.other = User.objects.create_user(
             "o@test.kz", "pass12345", first_name="O", last_name="T",
-            role=Role.PATIENT,
+            role=User.Role.PATIENT,
         )
         doctor_user = User.objects.create_user(
             "d@test.kz", "pass12345", first_name="D", last_name="T",
-            role=Role.DOCTOR,
+            role=User.Role.DOCTOR,
         )
         spec = Specialization.objects.create(name="Cardiology")
         doctor = DoctorProfile.objects.create(
             user=doctor_user, specialization=spec,
-            license_number="L-1", experience_years=5,
+            license_number="L-1", experience_years=5, consultation_price=10000,
         )
         self.appointment = Appointment.objects.create(
             patient=self.patient, doctor=doctor,

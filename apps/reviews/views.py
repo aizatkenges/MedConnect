@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Review
 from .permissions import IsReviewOwnerOrAdminOrReadOnly
 from .serializers import ReviewSerializer

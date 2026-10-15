@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'apps.doctor',
     'apps.reviews',
     'apps.users',
+    "rest_framework",
+    "django_filters",
+
+
 ]
 
 MIDDLEWARE = [

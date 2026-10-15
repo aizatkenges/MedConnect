@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.appointments.models import Appointment, AppointmentStatus
+from apps.appointments.models import Appointment
 from apps.users.models import User
 
 from .models import Review
@@ -37,7 +37,7 @@ class ReviewSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 "You can review only your own appointment."
             )
-        if appointment.status != AppointmentStatus.COMPLETED:
+        if appointment.status != Appointment.status.COMPLETED:
             raise serializers.ValidationError(
                 "You can review only a completed appointment."
             )
