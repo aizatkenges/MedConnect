@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from apps.appointments.models import Appointment, AppointmentStatus
-from apps.doctors.models import DoctorProfile, Specialization
+from apps.doctor.models import DoctorProfile, Specialization
 from apps.users.models import Role, User
 
 from .models import Review
